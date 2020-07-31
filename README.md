@@ -1,4 +1,4 @@
-# ForReddit-Meme-to-Chromecast
+# Meme-to-CC
     
 # Summary 
   Grab memes from a subreddit for memes, I will use r/highqualitymemes, and send them to a google photos folder for
