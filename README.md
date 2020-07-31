@@ -6,6 +6,8 @@
   python3 script intended for individual home use. 
 
 # Pre-Req
+  - change 'redditAPI.txt' values to match your own
+  - download your google photos API key json file and put it in the project directory
   - install python3
   - install pip
   - install Pillow:
