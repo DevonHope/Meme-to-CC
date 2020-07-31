@@ -6,6 +6,8 @@
       - can download memes from specific subreddit and fix them to fit the size of a standard 1080p or 4k tv
 #### Not working components:
    - uploadTool
+   - self deploying shell script (windows and linux)
+      - script to run the python script and java script at a set time everyday to grab new memes
 
 ## Summary 
   Grab memes from a subreddit for memes, I will use r/highqualitymemes, and send them to a google photos folder for
