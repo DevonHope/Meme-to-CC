@@ -1,0 +1,1 @@
+{"API-ID":"id","API-Secret":"secret","User-Agent":"Reddit-CC","Username":"your username","Password":"your pass"}

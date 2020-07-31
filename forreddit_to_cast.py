@@ -177,14 +177,6 @@ def formatMemes(sub):
 					newname = fixme+"/c_"+str(m)
 					back.save(newname)
 
-'''
-#get google photos API to upload files to folder
-def runJava(sub):
-	startJVM(getDefaultJVMPath(),"-ea")
-	java.lang.System.out.println("Call Java")
-	shutdownJVM()
-'''
-
 def main():
 	#get sub and limit from arguments
 	parser = argparse.ArgumentParser()
@@ -210,7 +202,8 @@ def main():
 		l = int(args.limit)
 
 	#read OAUTH key from separate file
-	A_path = 'C:\\Users\\devon\\Documents\\chromecast image formatter\\redditAPI.txt'
+	#change path to reddit api OAUTH file
+	A_path = 'redditAPI.txt'
 	
 	#open json api file
 	with open(A_path, 'r') as api_file:
