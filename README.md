@@ -2,8 +2,8 @@
     
 # Summary 
   Grab memes from a subreddit for memes, I will use r/highqualitymemes, and send them to a google photos folder for
-  a chromecast to use as wallpapers for a TV. USES: Reddit API, Google Photos API, python3+. This is a very basic
-  python3 script intended for individual home use. 
+  a chromecast to use as wallpapers for a TV. This is a very basic python3 script intended for individual home use. 
+  - USES: Reddit API, Google Photos API, python3+. 
 
 # Pre-Req
   - change 'redditAPI.txt' values to match your own
