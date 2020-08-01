@@ -178,14 +178,6 @@ def formatMemes(sub):
 					newname = fixme+"/c_"+str(m)
 					back.save(newname)
 
-'''
-#get google photos API to upload files to folder
-def runJava(sub):
-	startJVM(getDefaultJVMPath(),"-ea")
-	java.lang.System.out.println("Call Java")
-	shutdownJVM()
-'''
-
 def main():
 	#get sub and limit from arguments
 	parser = argparse.ArgumentParser()
