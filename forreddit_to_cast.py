@@ -24,7 +24,7 @@ import requests
 import json
 from os import listdir
 from os.path import isfile, join
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageFile
 from pprint import pprint
 from urllib.request import urlretrieve
 
@@ -94,6 +94,7 @@ def getmemes(posts,sub):
 	os.chdir("../..")
 
 def formatMemes(sub):
+	ImageFile.LOAD_TRUNCATED_IMAGES = True
 	bgdir = "resources/bgmemes"
 	memedir = "resources/sub_"+sub
 	fixme = "resources/fixed_"+sub
@@ -177,6 +178,14 @@ def formatMemes(sub):
 					newname = fixme+"/c_"+str(m)
 					back.save(newname)
 
+'''
+#get google photos API to upload files to folder
+def runJava(sub):
+	startJVM(getDefaultJVMPath(),"-ea")
+	java.lang.System.out.println("Call Java")
+	shutdownJVM()
+'''
+
 def main():
 	#get sub and limit from arguments
 	parser = argparse.ArgumentParser()
@@ -202,7 +211,6 @@ def main():
 		l = int(args.limit)
 
 	#read OAUTH key from separate file
-	#change path to reddit api OAUTH file
 	A_path = 'redditAPI.txt'
 	
 	#open json api file
