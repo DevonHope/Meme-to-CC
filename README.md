@@ -16,6 +16,7 @@
 
 ## Pre-Req
   - change 'redditAPI.txt' values to match your own
+    - get your Reddit API keys at [reddit](https://www.reddit.com/prefs/apps)
   - download your google photos API key json file and put it in the project directory
   - install python3
   - install pip
