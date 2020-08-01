@@ -39,7 +39,7 @@ python3 forreddit_to_cast.py
 ```
   - arguments: 
     - --sub or -s: for choosing your sub. ex memes or highqualitymemes
-    - --limit or -l: for choosing the limit of images that are downloaded ex 10,20,30,50,100
+    - --limit or -l: for choosing the limit of images that are downloaded ex 10,50,100,...
     - NOTE: Arguments can be run separately, default values will be used for either 
     - default values are:
         - sub: memes
