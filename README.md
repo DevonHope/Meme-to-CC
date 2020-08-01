@@ -20,12 +20,14 @@
   - download your google photos API key json file and put it in the project directory
   - install python3
   - install pip
+    - `python3 -m install pip`
   - install Pillow:
     - `pip install Pillow`
   - install praw:
     - `pip install praw`
   - install pandas:
     - `pip install pandas`
+  - install java 1.8
 
 ## Run
 Run any of these variations in a cmd or terminal 
