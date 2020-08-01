@@ -2,7 +2,7 @@
 
 # Table of Contents
 
-- [Dev Progress] (https://github.com/WalterMitty2112/Meme-to-CC#currently-under-development)
+- [Dev Progress](https://github.com/WalterMitty2112/Meme-to-CC#currently-under-development)
 - [Summary](https://github.com/WalterMitty2112/Meme-to-CC#summary)
 - [Pre-Reqs](https://github.com/WalterMitty2112/Meme-to-CC#pre-req)
 - [Run](https://github.com/WalterMitty2112/Meme-to-CC#run)
