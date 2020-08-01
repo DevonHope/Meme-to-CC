@@ -1,5 +1,12 @@
 # Meme-to-CC
 
+# Table of Contents
+
+- [Dev Progress] (https://github.com/WalterMitty2112/Meme-to-CC#currently-under-development)
+- [Summary](https://github.com/WalterMitty2112/Meme-to-CC#summary)
+- [Pre-Reqs](https://github.com/WalterMitty2112/Meme-to-CC#pre-req)
+- [Run](https://github.com/WalterMitty2112/Meme-to-CC#run)
+
 ## CURRENTLY UNDER DEVELOPMENT
 #### Known working components:
    - python script forreddit_to_cast.py
