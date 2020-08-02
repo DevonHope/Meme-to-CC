@@ -20,7 +20,9 @@
   Grab memes from a subreddit for memes, I will use r/highqualitymemes, and send them to a google photos folder for
   a chromecast to use as wallpapers for a TV. This is a very basic python3 script intended for individual home use.
   
-  All backgrounds for each meme are found in resources/bgmemes, they can be replaced or added to as long as the new image size follows a 16:9 aspect ratio and is greater than 1920x1080 or 2048x1164 which is the exact size that chromecast favors.
+  All backgrounds for each meme are found in resources/bgmemes, they can be replaced or added to as long as the new image size follows a 16:9 aspect ratio and is greater than 1920x1080 or 2048x1164 which is the exact size that chromecast favors. Ex. base.jpg and base2.jpg are formatted for chromecast already
+  
+  The Meme Formatter I wrote is used to take each meme and add it to a background after resizing it if needed. All backgrounds can be replaced but I chose these because some are from memes and some are just nice as wallpapers. The best results come from wallpapers that are singular colors, this distracts less from the meme.
   
   - USES: Reddit API, Google Photos API, python3+, Java 1.8, [Meme formatter](https://github.com/WalterMitty2112/Meme-Formatter-for-Chromecast)
 
