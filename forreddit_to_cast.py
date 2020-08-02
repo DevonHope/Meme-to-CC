@@ -183,7 +183,7 @@ def getposts(sub, multi, l):
 	def_l = 5
 
 	#read OAUTH key from separate file
-	A_path = 'C:\\Users\\devon\\Documents\\chromecast image formatter\\redditAPI.txt'
+	A_path = 'redditAPI.txt'
 	
 	#open json api file
 	with open(A_path, 'r') as api_file:
