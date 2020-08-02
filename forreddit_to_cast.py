@@ -178,32 +178,12 @@ def formatMemes(sub):
 					newname = fixme+"/c_"+str(m)
 					back.save(newname)
 
-def main():
-	#get sub and limit from arguments
-	parser = argparse.ArgumentParser()
-	parser.add_argument('--sub', '-s')
-	parser.add_argument('--limit','-l')
-	args = parser.parse_args()
-	sub = args.sub
-	l = args.limit
-
-	if(sub is None and l is None):
-		print('default limit used: 5')
-		print('default sub used: memes')
-		sub = 'memes'
-		l = 5
-	elif(sub is None):
-		print('default sub used: memes')
-		sub = 'memes'
-		l = int(args.limit)
-	elif(l is None):
-		print('default limit used: 5')
-		l = 5
-	else:
-		l = int(args.limit)
+def getposts(sub, multi, l):
+	def_s = 'memes'
+	def_l = 5
 
 	#read OAUTH key from separate file
-	A_path = 'redditAPI.txt'
+	A_path = 'C:\\Users\\devon\\Documents\\chromecast image formatter\\redditAPI.txt'
 	
 	#open json api file
 	with open(A_path, 'r') as api_file:
@@ -227,7 +207,34 @@ def main():
 
 	#get all posts from specified subreddit
 	posts = []
-	sr = r.subreddit(sub).hot(limit=l)
+
+	if(multi is None):
+		if(sub is None and l is None):
+			print('default limit used: ' + str(def_l))
+			print('default sub used: ' + def_s)
+			sub = def_s
+			li = def_l
+		elif(sub is None):
+			print('default sub used: ' + def_s)
+			sub = def_s
+			li = int(l)
+		elif(l is None):
+			print('default limit used: ' + str(def_l))
+			li = def_l
+		else:
+			li = int(l)
+
+		sr = r.subreddit(sub).hot(limit=li)
+	else:
+		sub = multi
+		if(l is None):
+			print('default limit used: ' + str(def_l))
+			li = def_l
+		else:
+			li = int(l)
+
+		sr = r.multireddit(uName, sub).hot(limit=li)
+
 
 	for post in sr:
 		posts.append([post.title, \
@@ -248,8 +255,25 @@ def main():
 										'body', \
 										'created'])
 
-	getmemes(posts,sub)
-	formatMemes(sub)
+	return {'po':posts,'sub':sub}
+
+def main():
+
+	#get sub and limit from arguments
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--sub', '-s')
+	parser.add_argument('--multi', '-m')
+	parser.add_argument('--limit','-l')
+	args = parser.parse_args()
+	sub = args.sub
+	l = args.limit
+	mult = args.multi
+
+	dic = getposts(sub, mult, l)
+
+	#print(posts)
+	getmemes(dic['po'],dic['sub'])
+	formatMemes(dic['sub'])
 
 if __name__ == "__main__":
 	try:
