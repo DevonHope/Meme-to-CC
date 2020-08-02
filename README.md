@@ -40,14 +40,18 @@
 Run any of these variations in a cmd or terminal 
 ```
 python3 forreddit_to_cast.py -s memes -l 20
+python3 forreddit_to_cast.py -m all_memes -l 150
 python3 forreddit_to_cast.py -s me_irl
+python3 forreddit_to_cast.py -m all_memes
 python3 forreddit_to_cast.py -l 50
 python3 forreddit_to_cast.py
 ```
   - arguments: 
     - --sub or -s: for choosing your sub. ex memes or highqualitymemes
+    - --multi or -m: for chooing a multireddit on your reddit acct ex all_memes @Red-CC
     - --limit or -l: for choosing the limit of images that are downloaded ex 10,50,100,...
     - NOTE: Arguments can be run separately, default values will be used for either 
     - default values are:
         - sub: memes
         - limit: 5
+        - no default value for multireddit
