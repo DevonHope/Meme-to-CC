@@ -18,10 +18,14 @@
 
 ## Summary 
   Grab memes from a subreddit for memes, I will use r/highqualitymemes, and send them to a google photos folder for
-  a chromecast to use as wallpapers for a TV. This is a very basic python3 script intended for individual home use. 
+  a chromecast to use as wallpapers for a TV. This is a very basic python3 script intended for individual home use.
+  
+  All backgrounds for each meme is found in resources/bgmemes, they can be replaced or added to as long as the new image size follows a 16:9 aspect ratio and is greater than 1920x1080 or 2048x1164 which is the exact size that chromecast favors.
+  
   - USES: Reddit API, Google Photos API, python3+, Java 1.8, [Meme formatter](https://github.com/WalterMitty2112/Meme-Formatter-for-Chromecast)
 
 ## Pre-Req
+
   - change 'redditAPI.txt' values to match your own
     - get your Reddit API keys at [reddit](https://www.reddit.com/prefs/apps)
   - download your google photos API key json file and put it in the project directory
