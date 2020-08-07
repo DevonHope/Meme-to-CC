@@ -52,6 +52,8 @@ def printPB (iteration, total, prefix = '', suffix = '', decimals = 1, length = 
         print()
 
 def getmemes(posts,sub):
+	a_ext = ["jpg","png"]
+
 	#change directory to meme folder
 	fold = 'resources/sub_'+sub
 	fixfold = 'resources/fixed_'+sub
@@ -72,7 +74,7 @@ def getmemes(posts,sub):
 			name = name[3]
 			if('.' in name):
 				ext = name.split('.')[1]
-				if(ext != 'gifv' or ext != 'gif'):
+				if(ext in a_ext):
 					if(len(ext) <= 3):
 						#print('Downloading image: '+name)
 						printPB(i+1,len(posts['url']), prefix='Dowloading:',suffix='Done',length=50)
@@ -98,6 +100,7 @@ def formatMemes(sub):
 	bgdir = "resources/bgmemes"
 	memedir = "resources/sub_"+sub
 	fixme = "resources/fixed_"+sub
+	a_ext = ["jpg","png"]
 
 	#get all background images
 	allbg = [im for im in listdir(bgdir) if isfile(join(bgdir, im))]
@@ -124,7 +127,7 @@ def formatMemes(sub):
 	printPB(0, len(allmeme), prefix='Fixing:',suffix='Done',length=50)
 	for i, m in enumerate(allmeme):
 		m_ext = m.split('.')[1]
-		if(m_ext != 'gif' or m_ext != 'gifv'):
+		if(m_ext in a_ext):
 			#get path for random background meme
 			ran = random.choice(newbg)
 
@@ -133,8 +136,11 @@ def formatMemes(sub):
 			mepath = memedir+"/"+m
 
 			#open images
-			bg = Image.open(bgpath)
-			me = Image.open(mepath)
+			try:
+				bg = Image.open(bgpath)
+				me = Image.open(mepath)
+			except Image.UnidentifiedImageError as e: print(e)
+
 
 			o = True
 			while(o):
@@ -165,7 +171,7 @@ def formatMemes(sub):
 					bg = Image.open(bgpath)
 
 				elif(bg.width >= me.width and bg.height >= me.height):
-					printPB(i+1, len(allmeme), prefix='Fixing:',suffix='Done',length=50)
+					printPB(i+1, len(allmeme), prefix='Formatting:',suffix='Done',length=50)
 					#print('Fixing image '+m)
 					o = False
 					#make backup copy
