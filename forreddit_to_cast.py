@@ -19,14 +19,16 @@ import os
 import argparse
 import random
 import urllib.error
-import sys
+import shutil, sys
 import requests
+import requests.auth
 import json
+import urllib3
 from os import listdir
 from os.path import isfile, join
 from PIL import Image, ImageFile
 from pprint import pprint
-from urllib.request import urlretrieve
+#from urllib.request import urlopen
 
 
 # Print iterations progress
@@ -80,9 +82,15 @@ def getmemes(posts,sub):
 						printPB(i+1,len(posts['url']), prefix='Dowloading:',suffix='Done',length=50)
 						#try and except for error handling
 						try:
-								urlretrieve(url, name)
-						except urllib.error.URLError as e: ResponseData = e.read().decode("utf8", 'ignore')
-						except urllib.error.HTTPError as e: ResponseData = e.read().decode("utf8", 'ignore')
+
+							img = urllib3.PoolManager()
+							with img.request('GET',url,preload_content=False) as fimg, open(name,'wb') as f:
+								shutil.copyfileobj(fimg, f)
+							fimg.release_conn()
+							#urlretrieve(url, name)
+						except urllib3.URLError as e: ResponseData = e.read().decode("utf8", 'ignore')
+						except urllib3.HTTPError as e: ResponseData = e.read().decode("utf8", 'ignore')
+						except urllib3.HTTPException as e: ResponseData = e.read().decode("utf8",'ignore')
 						except KeyboardInterrupt:
 							print()
 							print('UGH! I almost dropped my croissant!')
@@ -198,6 +206,19 @@ def getposts(sub, multi, l):
 	#parse file
 	j_obj = json.loads(data)
 
+	'''
+	#get user information
+	print("Reddit")
+	in_name = input("Username: ")
+	in_pswd = input("Password: ")
+
+	cl_auth = requests.auth.HTTPBasicAuth(API,Secret)
+	post_data = {"grant_type":"password","username":in_name, "password":in_pswd}
+	headers = {"User-Agent":usr_a}
+	response = requests.post("https://www.reddit.com/api/v1/access_token", auth=cl_auth, data=post_data, headers=headers)
+	print(response.json())
+	'''
+
 	#get keys from json obj
 	API = j_obj['API-ID']
 	Secret = j_obj['API-Secret']
@@ -241,7 +262,8 @@ def getposts(sub, multi, l):
 
 		sr = r.multireddit(uName, sub).hot(limit=li)
 
-
+	i=1
+	printPB(0, li, prefix='Getting Posts:',suffix='Done',length=50)
 	for post in sr:
 		posts.append([post.title, \
 					post.score, \
@@ -251,6 +273,8 @@ def getposts(sub, multi, l):
 					post.num_comments, \
 					post.selftext, \
 					post.created])
+		printPB(i+1, li, prefix='Getting Posts:',suffix='Done',length=50)
+		i += 1
 
 	posts = pd.DataFrame(posts,columns=['title', \
 										'score', \
