@@ -28,8 +28,6 @@ from os import listdir
 from os.path import isfile, join
 from PIL import Image, ImageFile
 from pprint import pprint
-#from urllib.request import urlopen
-
 
 # Print iterations progress
 def printPB (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
