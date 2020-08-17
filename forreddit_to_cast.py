@@ -147,7 +147,6 @@ def formatMemes(sub):
 				me = Image.open(mepath)
 			except Image.UnidentifiedImageError as e: print(e)
 
-
 			o = True
 			while(o):
 				#find ratios
@@ -203,19 +202,6 @@ def getposts(sub, multi, l):
 	
 	#parse file
 	j_obj = json.loads(data)
-
-	'''
-	#get user information
-	print("Reddit")
-	in_name = input("Username: ")
-	in_pswd = input("Password: ")
-
-	cl_auth = requests.auth.HTTPBasicAuth(API,Secret)
-	post_data = {"grant_type":"password","username":in_name, "password":in_pswd}
-	headers = {"User-Agent":usr_a}
-	response = requests.post("https://www.reddit.com/api/v1/access_token", auth=cl_auth, data=post_data, headers=headers)
-	print(response.json())
-	'''
 
 	#get keys from json obj
 	API = j_obj['API-ID']
