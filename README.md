@@ -9,12 +9,12 @@
 
 ## CURRENTLY UNDER DEVELOPMENT
 #### Known working components:
-   - python script forreddit_to_cast.py
+   - python script meme_to_cc.py
       - can download memes from specific subreddit and fix them to fit the size of a standard 1080p or 4k tv
-   - can grab albums ID from google photos API
+   - grab albums ID from google photos API
 #### Not working components:
-   - cannot empty old album
-   - cannot upload photos 
+   - empty old album
+   - upload photos 
    - self deploying shell script (windows and linux)
       - script to run the python script and java script at a set time everyday to grab new memes
 
