@@ -24,10 +24,11 @@ import requests
 import requests.auth
 import json
 import urllib3
+import upload
 from os import listdir
-from os.path import isfile, join
-from PIL import Image, ImageFile
 from pprint import pprint
+from PIL import Image, ImageFile
+from os.path import isfile, join
 
 # Print iterations progress
 def printPB (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
@@ -101,7 +102,7 @@ def getmemes(posts,sub):
 	print(str(num_me) + ' memes downloaded')
 	os.chdir("../..")
 
-def formatMemes(sub):
+def formatMemes(sub, album):
 	ImageFile.LOAD_TRUNCATED_IMAGES = True
 	bgdir = "resources/bgmemes"
 	memedir = "resources/sub_"+sub
@@ -122,7 +123,6 @@ def formatMemes(sub):
 
 			#remove old file
 			os.remove(p_bg)
-
 			newname = p_bg.partition('.')[0] + ".jpg"
 			rgb_im.save(newname)
 
@@ -174,7 +174,7 @@ def formatMemes(sub):
 					ran = random.choice(newbg)
 					bgpath = bgdir+"/"+ran
 					bg = Image.open(bgpath)
-
+				#the meme is in proper format
 				elif(bg.width >= me.width and bg.height >= me.height):
 					printPB(i+1, len(allmeme), prefix='Formatting:',suffix='Done',length=50)
 					#print('Fixing image '+m)
@@ -184,10 +184,12 @@ def formatMemes(sub):
 
 					#get middle of image
 					pos = ((back.width - me.width)// 2,(back.height - me.height)//2)
-
 					back.paste(me, pos)
 					newname = fixme+"/c_"+str(m)
 					back.save(newname)
+					#up = upload(album)
+					#upload.getAlbumID(album)
+					#upload.uploadImage(newname, album)
 
 def getposts(sub, multi, l):
 	def_s = 'memes'
@@ -271,23 +273,38 @@ def getposts(sub, multi, l):
 
 	return {'po':posts,'sub':sub}
 
+def del_prev_im(sub):
+	oldfix = 'resources/fixed_'+sub
+	oldsub = 'resources/sub_'+sub
+	if( os.path.isdir(oldfix) and os.path.isdir(oldsub)):
+		shutil.rmtree(oldfix, ignore_errors=True)
+		shutil.rmtree(oldsub, ignore_errors=True)
+		print("\n\nOld memes removed at " + oldfix + " and " + oldsub +"\n")
+
+
 def main():
 
 	#get sub and limit from arguments
+	#most recent use of args 
+	# -m all_memes -a vroom -l 150
 	parser = argparse.ArgumentParser()
 	parser.add_argument('--sub', '-s')
 	parser.add_argument('--multi', '-m')
 	parser.add_argument('--limit','-l')
+	parser.add_argument('--album','-a')
 	args = parser.parse_args()
 	sub = args.sub
 	l = args.limit
 	mult = args.multi
+	album = args.album
 
 	dic = getposts(sub, mult, l)
 
 	#print(posts)
+	del_prev_im(dic['sub'])
 	getmemes(dic['po'],dic['sub'])
-	formatMemes(dic['sub'])
+	upload.getAlbumID(album)
+	formatMemes(dic['sub'], album)
 
 if __name__ == "__main__":
 	try:
