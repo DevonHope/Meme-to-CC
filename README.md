@@ -16,7 +16,7 @@
    - empty old album
    - upload photos 
    - self deploying shell script (windows and linux)
-      - script to run the python script and java script at a set time everyday to grab new memes
+      - script to run the python script at a set time everyday to grab new memes
 
 ## Summary 
   Grab memes from a subreddit for memes, I will use r/highqualitymemes, and send them to a google photos folder for
