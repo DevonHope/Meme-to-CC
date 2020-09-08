@@ -11,8 +11,10 @@
 #### Known working components:
    - python script forreddit_to_cast.py
       - can download memes from specific subreddit and fix them to fit the size of a standard 1080p or 4k tv
+   - can grab albums ID from google photos API
 #### Not working components:
-   - uploadTool
+   - cannot empty old album
+   - cannot upload photos 
    - self deploying shell script (windows and linux)
       - script to run the python script and java script at a set time everyday to grab new memes
 
@@ -40,7 +42,6 @@
     - `pip install praw`
   - install pandas:
     - `pip install pandas`
-  - install java 1.8
 
 ## Run
 Run any of these variations in a cmd or terminal 
