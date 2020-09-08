@@ -30,6 +30,8 @@
 
 ## Pre-Req
 
+NOTE: All of this will be added to dev package when finalized
+
   - change 'redditAPI.txt' values to match your own
     - get your Reddit API keys at [reddit](https://www.reddit.com/prefs/apps)
   - download your google photos API key json file and put it in the project directory
@@ -42,7 +44,6 @@
     - `pip install praw`
   - install pandas:
     - `pip install pandas`
-  NOTE: All of this will be added to dev package when finalized
 
 ## Run
 Run any of these variations in a cmd or terminal 
