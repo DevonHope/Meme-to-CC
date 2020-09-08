@@ -42,6 +42,7 @@
     - `pip install praw`
   - install pandas:
     - `pip install pandas`
+  NOTE: All of this will be added to dev package when finalized
 
 ## Run
 Run any of these variations in a cmd or terminal 
