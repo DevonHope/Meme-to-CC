@@ -60,7 +60,7 @@ python3 forreddit_to_cast.py
     - --multi or -m: for chooing a multireddit on your reddit acct ex all_memes @Red-CC
     - --limit or -l: for choosing the limit of images that are downloaded ex 10,50,100,...
     - --album or -a: for distinguishing the album name to add photos too
-    - NOTE: Arguments can be run separately, default values will be used for either 
+    - NOTE: Arguments can be run separately, default values will be used for either except for album
     - default values are:
         - sub: memes
         - limit: 5
